@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import PokeSearchBar from "../components/PokeSearchBar";
 
 const PokemonCard = ({ id }: { id: number }) => (
   <div>
@@ -28,6 +29,7 @@ const emptyPokemonArray = Array(151).fill(1);
 
 const Homepage = () => (
   <div>
+    <PokeSearchBar/>
     <Header />
     <div>
       {emptyPokemonArray.map((_id, index) => (
