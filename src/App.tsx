@@ -2,9 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Homepage from "./pages/Homepage";
 import DetailPage from "./pages/DetailPage";
-
-
-
+import TypePage from "./pages/TypePage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: "/pokemon/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "/type",
+        element: <TypePage />,
       },
     ],
   },

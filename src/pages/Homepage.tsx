@@ -8,6 +8,14 @@ const PokemonCard = ({ id }: { id: number }) => (
   </div>
 );
 
+const TypePage = () => (
+  <div>
+    <Link to={`/type`}>
+      <h1>Types</h1>
+    </Link>
+  </div>
+);
+
 // mit Array(number) koennen wir einen Array mit einer bestimmten laenge erzeugen:
 // const array151 = Array(151)
 // dieser wird allerdings leere Eintraege haben.
@@ -27,6 +35,9 @@ const emptyPokemonArray = Array(151).fill(1);
 
 const Homepage = () => (
   <div>
+    <div>
+      <TypePage />
+    </div>
     <h1>Pokemon</h1>
     <div>
       {emptyPokemonArray.map((_id, index) => (
