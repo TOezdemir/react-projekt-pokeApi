@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const PokemonCard = ({ id }: { id: number }) => (
   <div>
@@ -27,7 +28,7 @@ const emptyPokemonArray = Array(151).fill(1);
 
 const Homepage = () => (
   <div>
-    <h1>Pokemon</h1>
+    <Header />
     <div>
       {emptyPokemonArray.map((_id, index) => (
         // da alle eintraege des Arrays 1 sind, verwenden wir den index um hochzuzaehlen.
