@@ -13,7 +13,13 @@ export default function PokeSearchBar(){
         if(searchText){
             setPokemonData(await getPokemonById(searchText));
             inputRef.current!.value = ""
+            console.log(searchText)
         }
+    }
+
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        await catchPokemon();
     }
 
 	useEffect(() => {
@@ -22,14 +28,14 @@ export default function PokeSearchBar(){
 
     return(
         <section>
-            <form action="">
+            <form onSubmit={handleSubmit}>
             <input 
               				type="text" 
               				aria-label="Pokemon search field" 
               				placeholder="Pokemon"
 							ref={inputRef}
               				className="border border-gray-400 px-3 py-2 rounded-lg mr-2"
-              				onChange={(event) => setSearchText(event.target.value)}
+              				// onChange={(event) => setSearchText(event.target.value)}
                             // value={searchText}
 					/>
             </form>
