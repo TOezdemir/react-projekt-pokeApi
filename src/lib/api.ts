@@ -5,7 +5,7 @@ export type Pokemon = {
     };
   }
 
-export default async function getPokemonById(id: number | string): Promise<Pokemon | void>{
+export default async function getPokemonById(id: number | string): Promise<Pokemon>{
     try{
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         if(!response.ok){
@@ -16,6 +16,6 @@ export default async function getPokemonById(id: number | string): Promise<Pokem
     }
     catch (err){
         console.log(err)
-        return 
+        throw new Error
     }
 }

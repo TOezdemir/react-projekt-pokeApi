@@ -4,8 +4,8 @@ import getPokemonById from "../lib/api";
 
 
 export default function PokeSearchBar(){
-	const [pokemonData, setPokemonData] = useState<Pokemon | void>(null);
-    const [searchText, setSearchText] = useState("")
+	const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
+    // const [searchText, setSearchText] = useState("")
 	const inputRef = useRef<HTMLInputElement>(null)
 
     const catchPokemon  = async () => {
@@ -30,6 +30,7 @@ export default function PokeSearchBar(){
 							ref={inputRef}
               				className="border border-gray-400 px-3 py-2 rounded-lg mr-2"
               				onChange={(event) => setSearchText(event.target.value)}
+                            // value={searchText}
 					/>
             </form>
         </section>

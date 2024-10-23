@@ -16,7 +16,7 @@ export default function DetailPage() {
   // via destructuring holen wir uns da nun direkt die id raus.
   const { id } = useParams();
 
-  const pokemonQuery = useQuery<Pokemon | void>({
+  const pokemonQuery = useQuery<Pokemon>({
     // der queryKey ist ein Array, der unsere Query eindeutig identifizieren soll
     // wichtig ist das fuer caching, aber auch um zu wissen wann neu gefetcht werden soll
     // (aehnlich wie beim dependency array mit useEffect)
@@ -45,8 +45,8 @@ export default function DetailPage() {
   return (
     <div>
       <h2>Details zu Pokemon #{id}</h2>
-      <h1>{pokemonQuery.data!.name}</h1>
-      <PlaySound audioURL={pokemonQuery.data!.cries.latest}/>
+      <h1>{pokemonQuery.data.name}</h1>
+      <PlaySound audioURL={pokemonQuery.data.cries.latest}/>
     </div>
   );
 }
