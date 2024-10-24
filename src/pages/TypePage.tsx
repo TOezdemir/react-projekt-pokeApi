@@ -1,4 +1,6 @@
 import { useState } from "react";
+import logo from "../assets/logo.png";
+import { NavLink } from "react-router-dom";
 
 // Liste der Pokémon-Typen
 const types = [
@@ -74,6 +76,14 @@ export default function Types() {
   return (
     <>
       <div>
+        <NavLink
+          to="/"
+          className="flex justify-center items-center dark:bg-black pt-8 pb-8"
+        >
+          <img src={logo} alt="" />
+        </NavLink>
+      </div>
+      <div className="grid grid-cols-3 mx-[20%]">
         {/* Buttons für die Typen */}
         {types.map((type) => (
           <button
@@ -96,7 +106,7 @@ export default function Types() {
       </div>
 
       {/* Button zum Auslösen der Suche */}
-      <div>
+      <div className="flex justify-center items-center text-slate-600">
         <button
           onClick={handleSearch}
           style={{
@@ -112,9 +122,9 @@ export default function Types() {
       </div>
 
       {/* Liste der aktuell ausgewählten Typen */}
-      <div>
+      <div className="flex flex-col justify-center items-center text-slate-600">
         <h3>Ausgewählte Typen:</h3>
-        <p>
+        <p className="text-center">
           {selectedTypes.length > 0
             ? selectedTypes.join(", ")
             : "Keine Typen ausgewählt"}
@@ -122,9 +132,9 @@ export default function Types() {
       </div>
 
       {/* Anzeige der gefundenen Pokémon */}
-      <div>
-        <h3>Gefundene Pokémon:</h3>
-        <ul>
+      <div className="flex flex-col justify-center items-center text-slate-600">
+        <h3 className="">Gefundene Pokémon:</h3>
+        <ul className="flex flex-col justify-center items-center">
           {pokemonList.length > 0 ? (
             pokemonList.map((pokemon, index) => <li key={index}>{pokemon}</li>)
           ) : (
