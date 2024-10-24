@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Pokemon } from "../lib/api";
 import callPokemon from "../lib/api";
 import { useNavigate } from "react-router-dom";
-import themebild from "../assets/theme.png";
-import menu from "../assets/menu.png";
+import themebild from "../assets/theme.svg";
+import menu from "../assets/menu.svg";
 import { useThemeContext } from "../contexts/themeContext";
 import { NavLink } from "react-router-dom";
 
