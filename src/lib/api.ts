@@ -11,6 +11,16 @@ export type Pokemon = {
     types: Type[];
     weight: number;
     moves: Moves[]
+    sprites: {
+        other: {
+            front_default: string
+        },
+        home: {
+            front_default: string,
+            front_shiny: string
+        }
+
+    }
   }
 
   export type Ability = {
