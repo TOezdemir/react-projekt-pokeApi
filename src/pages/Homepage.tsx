@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import PokeSearchBar from "../components/PokeSearchBar";
+import { useThemeContext } from "../contexts/themeContext";
 
 const PokemonCard = ({ id }: { id: number }) => (
   <div>
@@ -35,22 +36,32 @@ const TypePage = () => (
 
 const emptyPokemonArray = Array(151).fill(1);
 
-const Homepage = () => (
-  <div>
-    <div>
-      <TypePage />
+const Homepage = () => {
+  const { theme } = useThemeContext();
+  return (
+    <div
+      className={`${
+        theme == "dark" ? "xxxxx" : "sss"
+      }  min-h-[100vh] dark:bg-black bg-[#ccdadd]`}
+    >
+      <div className="flex flex-col  justify-center items-center ">
+        <div>
+          <TypePage />
+        </div>
+        <h1>Pokemon</h1>
+        <Header />
+        <PokeSearchBar />
+
+        <div>
+          {emptyPokemonArray.map((_id, index) => (
+            // da alle eintraege des Arrays 1 sind, verwenden wir den index um hochzuzaehlen.
+            // da der index bei 0 anfaengt, addieren wir jeweils 1
+            <PokemonCard key={index} id={index + 1} />
+          ))}
+        </div>
+      </div>
     </div>
-    <h1>Pokemon</h1>
-    <PokeSearchBar/>
-    <Header />
-    <div>
-      {emptyPokemonArray.map((_id, index) => (
-        // da alle eintraege des Arrays 1 sind, verwenden wir den index um hochzuzaehlen.
-        // da der index bei 0 anfaengt, addieren wir jeweils 1
-        <PokemonCard key={index} id={index + 1} />
-      ))}
-    </div>
-  </div>
-);
+  );
+};
 
 export default Homepage;

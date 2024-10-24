@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Liste der Pokémon-Typen
 const types = [
@@ -77,6 +77,7 @@ export default function Types() {
         {/* Buttons für die Typen */}
         {types.map((type) => (
           <button
+            className="text-slate-500"
             key={type}
             onClick={() => handleTypeToggle(type)}
             style={{

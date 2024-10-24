@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import type { Pokemon } from "../lib/api";
 import callPokemon from "../lib/api";
 import { useNavigate } from "react-router-dom";
+import themebild from "../assets/theme.png";
+import menu from "../assets/menu.png";
+import { useThemeContext } from "../contexts/themeContext";
+import { NavLink } from "react-router-dom";
 
 export default function PokeSearchBar() {
   const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
@@ -14,8 +18,8 @@ export default function PokeSearchBar() {
     const searchText = inputRef.current?.value;
     if (searchText) {
       try {
-        await callPokemon(searchText);
-        navigate(`/pokemon/${searchText}`);
+        const pokemon = await callPokemon(searchText);
+        navigate(`/pokemon/${pokemon.name}`);
       } catch (err) {
         console.error("Fehler:", err);
       }
@@ -34,19 +38,28 @@ export default function PokeSearchBar() {
     catchPokemon();
   }, []);
 
+  const { toggleTheme } = useThemeContext();
   return (
     <section>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          aria-label="Pokemon search field"
-          placeholder="Pokemon"
-          ref={inputRef}
-          className="border border-gray-400 px-3 py-2 rounded-lg mr-2"
-          onChange={(event) => setSearchText(event.target.value)}
-          value={searchText}
-        />
-      </form>
+      <div className="flex justify-between gap-8 items-center">
+        <NavLink to="/type">
+          <img src={menu} alt="menu" />
+        </NavLink>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            aria-label="Pokemon search field"
+            placeholder="Pokemon"
+            ref={inputRef}
+            className="border border-gray-400 px-3 py-2 rounded-lg mr-2"
+            onChange={(event) => setSearchText(event.target.value)}
+            value={searchText}
+          />
+        </form>
+        <button onClick={toggleTheme}>
+          <img src={themebild} alt="theme" className="" />
+        </button>
+      </div>
     </section>
   );
 }
