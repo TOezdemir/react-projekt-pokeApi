@@ -18,14 +18,13 @@ const PokemonCard = ({ id }: { id: number }) => {
       <Link to={`/pokemon/${id}`}>
         <div>
           <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonQuery.data?.id}.png`}
-            alt={pokemonQuery.data!.name}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonQuery.data.id}.png`}
+            alt={pokemonName}
           />
         </div>
         <div>
           <h3>#{id.toString().padStart(3, '0')}</h3>
           <p>{pokemonName}</p>
-        </div>
         </div>
       </Link>
     </div>
