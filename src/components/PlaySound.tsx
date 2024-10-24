@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 export default function PlaySound({ audioURL }: { audioURL: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [volume, setVolume] = useState(0.01)
+  const [volume] = useState(0.01)
   useEffect(() => {
     audioRef.current!.volume = volume
     audioRef.current!.play().catch((e) => console.error(e));
