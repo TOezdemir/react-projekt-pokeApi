@@ -27,6 +27,7 @@ export default function DetailPage() {
     <div>
       <h2>Details zu Pokemon #{id}</h2>
       <h1>{pokemonQuery.data.name}</h1>
+      {/* <p>{pokemonQuery.data.}</p> */}
       <PlaySound audioURL={pokemonQuery.data.cries.latest}/>
     </div>
   );
