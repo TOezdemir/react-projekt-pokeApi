@@ -49,6 +49,7 @@ export default function Types() {
         {/* Buttons für jeden Typ */}
         {types.map((type) => (
           <button
+            className="text-slate-500"
             key={type}
             onClick={() => handleTypeToggle(type)}
             style={{

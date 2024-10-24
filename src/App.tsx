@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import DetailPage from "./pages/DetailPage";
 import TypePage from "./pages/TypePage";
 import PokeSearchBar from "./components/PokeSearchBar";
+import { ThemeProvider } from "./contexts/themeContext";
 
 const router = createBrowserRouter([
   {
@@ -19,16 +20,20 @@ const router = createBrowserRouter([
         path: "/type",
         element: <TypePage />,
       },
-    {
-      path: "search",
-      element: <PokeSearchBar/>
-    },
+      {
+        path: "search",
+        element: <PokeSearchBar />,
+      },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 export default App;
