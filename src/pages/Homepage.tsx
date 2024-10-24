@@ -6,13 +6,13 @@ import PokemonCard from "../components/PokemonCard";
 
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const TypePage = () => (
-  <div>
-    <Link to={`/type`}>
-      <h1>Types</h1>
-    </Link>
-  </div>
-);
+// const TypePage = () => (
+//   <div>
+//     <Link to={`/type`}>
+//       <h1>Types</h1>
+//     </Link>
+//   </div>
+// );
 const emptyPokemonArray = Array(151).fill(1);
 
 const Homepage = () => {
