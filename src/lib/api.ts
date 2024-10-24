@@ -22,25 +22,12 @@ export default async function getPokemonById(id: number | string): Promise<Pokem
 
 export async function getPokemonByName(name: string): Promise<Pokemon>{
     try{
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
         if(!response.ok){
             throw new Error("Fehler beim Abrufen der Pokémon-Liste!");
         }
-        const data = await response.json();
-        const pokemonList = data.results;
-
-        // Finde das Pokemon
-        const pokemon = pokemonList.find((p: {name: string}) => p.name === name);
-        if (!pokemon) {
-            throw new Error(`Pokémon mit dem Namen "${name}" nicht gefunden!`);
-        }
-
-        // ID klären
-        const pokemonId = pokemon.url.split("/").slice(-2, -1)[0]; 
-
-        // Pokemon mit ID abrufen
-        const pokemonDetails = await getPokemonById(pokemonId);
-        return pokemonDetails; 
+        const data = await response.json() as Pokemon
+        return data
     }
     catch (err){
         console.log(err)

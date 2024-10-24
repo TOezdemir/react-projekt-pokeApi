@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import getPokemonById from "../lib/api";
 import PlaySound from "../components/PlaySound";
 import type { Pokemon } from "../lib/api";
