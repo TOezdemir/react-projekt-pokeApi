@@ -6,7 +6,12 @@ import { useThemeContext } from "../contexts/themeContext";
 const PokemonCard = ({ id }: { id: number }) => (
   <div>
     <Link to={`/pokemon/${id}`}>
-      <h3>#{id}</h3>
+    <div>
+      <img src="" alt="" />
+      <h3>#00{id}</h3>
+      <p>{id}</p>
+    </div>
+      
     </Link>
   </div>
 );
@@ -31,7 +36,7 @@ const TypePage = () => (
 // Das geht z.B. so: Array(151).fill(1)
 // (Hier sind alle Eintraege 1)
 // oder auch so: [...Array(151)]
-// (hier sind alle Eintraege undefined)
+// (hier sind alle Eintraege undefined) 
 // Erst dann koennen wir mappen.
 
 const emptyPokemonArray = Array(151).fill(1);
