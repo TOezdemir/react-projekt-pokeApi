@@ -15,7 +15,7 @@ export default function PokeSearchBar() {
   const navigate = useNavigate();
 
   const catchPokemon = async () => {
-    const searchText = inputRef.current?.value;
+    const searchText = inputRef.current?.value.toLocaleLowerCase()
     if (searchText) {
       try {
         const pokemon = await callPokemon(searchText);
@@ -50,7 +50,7 @@ export default function PokeSearchBar() {
           <input
             type="text"
             aria-label="Pokemon search field"
-            placeholder="Pokemon"
+            placeholder="Catch Pokémon..."
             ref={inputRef}
             className="border border-gray-400 px-3 py-2 rounded-lg mr-2"
             onChange={(event) => setSearchText(event.target.value)}
