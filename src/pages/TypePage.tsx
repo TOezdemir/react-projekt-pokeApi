@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Pokemon } from "../lib/api";
+import { Pokemon, Type } from "../lib/api";
 import { fetchPokemonByType } from "../lib/api";
 
 
-const types = [
+const typeNames: Type["type"]["name"][] = [
   "bug",
   "dark",
   "dragon",
@@ -70,7 +70,7 @@ export default function Types() {
     <>
       <div>
         {/* Buttons für die Typen */}
-        {types.map((type) => (
+        {typeNames.map((type) => (
           <button
             className="text-slate-500"
             key={type}
@@ -85,7 +85,7 @@ export default function Types() {
               cursor: "pointer",
             }}
           >
-            {type}
+            {type.toUpperCase()}
           </button>
         ))}
       </div>

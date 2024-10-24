@@ -19,7 +19,6 @@ export type Pokemon = {
             front_default: string,
             front_shiny: string
         }
-
     }
   }
 
