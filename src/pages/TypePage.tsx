@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 
 // Liste der Pokémon-Typen
