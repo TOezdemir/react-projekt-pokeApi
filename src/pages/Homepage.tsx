@@ -6,12 +6,11 @@ import { useThemeContext } from "../contexts/themeContext";
 const PokemonCard = ({ id }: { id: number }) => (
   <div>
     <Link to={`/pokemon/${id}`}>
-    <div>
-      <img src="" alt="" />
-      <h3>#00{id}</h3>
-      <p>{id}</p>
-    </div>
-      
+      <div>
+        <img src="" alt="" />
+        <h3>#00{id}</h3>
+        <p>{id}</p>
+      </div>
     </Link>
   </div>
 );
@@ -36,24 +35,15 @@ const TypePage = () => (
 // Das geht z.B. so: Array(151).fill(1)
 // (Hier sind alle Eintraege 1)
 // oder auch so: [...Array(151)]
-// (hier sind alle Eintraege undefined) 
+// (hier sind alle Eintraege undefined)
 // Erst dann koennen wir mappen.
 
 const emptyPokemonArray = Array(151).fill(1);
 
 const Homepage = () => {
-  const { theme } = useThemeContext();
   return (
-    <div
-      className={`${
-        theme == "dark" ? "xxxxx" : "sss"
-      }  min-h-[100vh] dark:bg-black bg-[#ccdadd]`}
-    >
-      <div className="flex flex-col  justify-center items-center ">
-        <div>
-          <TypePage />
-        </div>
-        <h1>Pokemon</h1>
+    <div className={`min-h-[100vh] dark:bg-black bg-[#ccdadd]`}>
+      <div className="flex flex-col  justify-center items-center  gap-8">
         <Header />
         <PokeSearchBar />
 
