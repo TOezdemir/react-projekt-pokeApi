@@ -1,65 +1,92 @@
 import { useState } from "react";
 
-// Definiere eine Liste der verfügbaren Pokémon-Typen
+// Liste der Pokémon-Typen
 const types = [
-  "BUG",
-  "DARK",
-  "DRAGON",
-  "ELECTRIC",
-  "FAIRY",
-  "FIGHTING",
-  "FIRE",
-  "FLYING",
-  "GHOST",
-  "GRASS",
-  "GROUND",
-  "ICE",
-  "NORMAL",
-  "PLANT",
-  "POISON",
-  "PSYCHIC",
-  "ROCK",
-  "STEEL",
-  "WATER",
+  "bug",
+  "dark",
+  "dragon",
+  "electric",
+  "fairy",
+  "fighting",
+  "fire",
+  "flying",
+  "ghost",
+  "grass",
+  "ground",
+  "ice",
+  "normal",
+  "plant",
+  "poison",
+  "psychic",
+  "rock",
+  "steel",
+  "water",
 ];
 
 export default function Types() {
-  // useState Hook, um die ausgewählten Typen zu speichern
+  // Zustand für die ausgewählten Typen
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  // Zustand für die gefilterten Pokémon
+  const [pokemonList, setPokemonList] = useState<any[]>([]);
 
-  // Funktion, um den Typ zu toggeln (hinzufügen/entfernen)
+  // Funktion, um den Typ zu toggeln
   const handleTypeToggle = (type: string) => {
     setSelectedTypes(
       (prevSelected) =>
         prevSelected.includes(type)
-          ? prevSelected.filter((t) => t !== type) // Entfernt den Typ, wenn er bereits ausgewählt ist
-          : [...prevSelected, type] // Fügt den Typ hinzu, wenn er nicht ausgewählt ist
+          ? prevSelected.filter((t) => t !== type) // Entferne Typ, wenn er bereits ausgewählt ist
+          : [...prevSelected, type] // Füge Typ hinzu, wenn er nicht ausgewählt ist
     );
   };
 
-  // Funktion, um die Auswahl zu bestätigen (z.B. um Pokémon zu filtern)
-  const handleSearch = () => {
-    console.log("Suche Pokémon mit diesen Typen:", selectedTypes);
-    // Hier könntest du die Logik hinzufügen, um Pokémon anhand der ausgewählten Typen zu filtern
+  // Funktion, um die Pokémon für einen bestimmten Typ zu fetchen
+  const fetchPokemonByType = async (type: string) => {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+    const data = await response.json();
+    return data.pokemon; // Dies gibt eine Liste der Pokémon für den Typ zurück
+  };
+
+  // Funktion, um alle Pokémon für die ausgewählten Typen zu fetchen und zu filtern
+  const handleSearch = async () => {
+    if (selectedTypes.length === 0) {
+      alert("Bitte wähle mindestens einen Typ aus.");
+      return;
+    }
+
+    try {
+      // Fette Pokémon für alle ausgewählten Typen
+      const promises = selectedTypes.map((type) => fetchPokemonByType(type));
+      const results = await Promise.all(promises);
+
+      // Logik zur Zusammenführung und Filterung der Pokémon hier einbauen
+      const allPokemons = results.flatMap((result) =>
+        result.map((p: any) => p.pokemon.name)
+      );
+      console.log("Gefundene Pokémon:", allPokemons);
+
+      // Setzt die Pokémon in den Zustand, um sie anzuzeigen
+      setPokemonList(allPokemons);
+    } catch (error) {
+      console.error("Fehler beim Abrufen der Pokémon:", error);
+    }
   };
 
   return (
     <>
       <div>
-        {/* Buttons für jeden Typ */}
+        {/* Buttons für die Typen */}
         {types.map((type) => (
           <button
             className="text-slate-500"
             key={type}
             onClick={() => handleTypeToggle(type)}
             style={{
-              margin: "10px",
-              padding: "7px",
+              margin: "5px",
+              padding: "10px",
               backgroundColor: selectedTypes.includes(type)
-                ? "lightblue"
-                : "white", // Farbliche Hervorhebung ausgewählter Buttons
+                ? "lightgreen"
+                : "white",
               border: "2px solid black",
-              borderRadius: "5px",
               cursor: "pointer",
             }}
           >
@@ -72,7 +99,13 @@ export default function Types() {
       <div>
         <button
           onClick={handleSearch}
-          style={{ marginTop: "20px", padding: "10px", cursor: "pointer" }}
+          style={{
+            margin: "5px",
+            padding: "10px",
+            backgroundColor: "lightblue",
+            border: "2px solid black",
+            cursor: "pointer",
+          }}
         >
           Suche Pokémon
         </button>
@@ -86,6 +119,18 @@ export default function Types() {
             ? selectedTypes.join(", ")
             : "Keine Typen ausgewählt"}
         </p>
+      </div>
+
+      {/* Anzeige der gefundenen Pokémon */}
+      <div>
+        <h3>Gefundene Pokémon:</h3>
+        <ul>
+          {pokemonList.length > 0 ? (
+            pokemonList.map((pokemon, index) => <li key={index}>{pokemon}</li>)
+          ) : (
+            <p>Keine Pokémon gefunden.</p>
+          )}
+        </ul>
       </div>
     </>
   );
