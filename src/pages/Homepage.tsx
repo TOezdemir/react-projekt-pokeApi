@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import PokeSearchBar from "../components/PokeSearchBar";
 // import { useThemeContext } from "../contexts/themeContext";
 import PokemonCard from "../components/PokemonCard";
-
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // const TypePage = () => (
@@ -13,6 +12,7 @@ import PokemonCard from "../components/PokemonCard";
 //     </Link>
 //   </div>
 // );
+
 const emptyPokemonArray = Array(151).fill(1);
 
 const Homepage = () => {
