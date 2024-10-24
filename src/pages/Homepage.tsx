@@ -11,14 +11,21 @@ const PokemonCard = ({ id }: { id: number }) => {
     queryFn: () => callPokemon(id),
   });
 
-  const pokemonName = pokemonQuery.data!.name.charAt(0).toUpperCase() + pokemonQuery.data!.name.slice(1).toLowerCase()
+  if (pokemonQuery.isError) {
+    return "Sorry, kaputt";
+  }
+
+  if (pokemonQuery.isPending) {
+    return "Loading...";
+  }
+  const pokemonName = pokemonQuery.data.name.charAt(0).toUpperCase() + pokemonQuery.data.name.slice(1).toLowerCase()
 
   return (
     <div>
       <Link to={`/pokemon/${id}`}>
         <div>
           <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonQuery.data.id}.png`}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonQuery.data.id}.png`}
             alt={pokemonName}
           />
         </div>
