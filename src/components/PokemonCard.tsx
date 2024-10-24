@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import callPokemon from "../lib/api";
 
+
+
 export default function PokemonCard({ id }: { id: number }) {
     const pokemonQuery = useQuery({
       queryKey: ["pokemon", id],
@@ -15,6 +17,7 @@ export default function PokemonCard({ id }: { id: number }) {
     if (pokemonQuery.isPending) {
       return "Pokédex is loading...";
     }
+    
     const pokemonName = pokemonQuery.data.name.charAt(0).toUpperCase() + pokemonQuery.data.name.slice(1).toLowerCase()
   
     return (
