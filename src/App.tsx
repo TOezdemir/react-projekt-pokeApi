@@ -2,9 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Homepage from "./pages/Homepage";
 import DetailPage from "./pages/DetailPage";
-
-
-
+import TypePage from "./pages/TypePage";
+import PokeSearchBar from "./components/PokeSearchBar";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +15,14 @@ const router = createBrowserRouter([
         path: "/pokemon/:id",
         element: <DetailPage />,
       },
+      {
+        path: "/type",
+        element: <TypePage />,
+      },
+    {
+      path: "search",
+      element: <PokeSearchBar/>
+    },
     ],
   },
 ]);

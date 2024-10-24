@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import PokeSearchBar from "../components/PokeSearchBar";
 
 const PokemonCard = ({ id }: { id: number }) => (
   <div>
     <Link to={`/pokemon/${id}`}>
       <h3>#{id}</h3>
+    </Link>
+  </div>
+);
+
+const TypePage = () => (
+  <div>
+    <Link to={`/type`}>
+      <h1>Types</h1>
     </Link>
   </div>
 );
@@ -28,6 +37,11 @@ const emptyPokemonArray = Array(151).fill(1);
 
 const Homepage = () => (
   <div>
+    <div>
+      <TypePage />
+    </div>
+    <h1>Pokemon</h1>
+    <PokeSearchBar/>
     <Header />
     <div>
       {emptyPokemonArray.map((_id, index) => (
