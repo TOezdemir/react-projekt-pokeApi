@@ -10,13 +10,6 @@ const PokemonCard = ({ id }: { id: number }) => {
     queryKey: ["pokemon", id],
     queryFn: () => callPokemon(id),
   });
-  if (pokemonQuery.isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (pokemonQuery.isError) {
-    return <div>Error: {pokemonQuery.error.message}</div>;
-  }
 
   const pokemonName = pokemonQuery.data!.name.charAt(0).toUpperCase() + pokemonQuery.data!.name.slice(1).toLowerCase()
 
