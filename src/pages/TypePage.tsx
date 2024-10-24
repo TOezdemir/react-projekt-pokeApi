@@ -1,6 +1,6 @@
 import { useState } from "react";
-import logo from "../assets/logo.svg";
-import { NavLink } from "react-router-dom";
+import { Pokemon } from "../lib/api";
+import { Link } from "react-router-dom";
 
 // Liste der Pokémon-Typen
 const types = [
@@ -29,7 +29,7 @@ export default function Types() {
   // Zustand für die ausgewählten Typen
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   // Zustand für die gefilterten Pokémon
-  const [pokemonList, setPokemonList] = useState<any[]>([]);
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
   // Funktion, um den Typ zu toggeln
   const handleTypeToggle = (type: string) => {
@@ -43,9 +43,15 @@ export default function Types() {
 
   // Funktion, um die Pokémon für einen bestimmten Typ zu fetchen
   const fetchPokemonByType = async (type: string) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
-    const data = await response.json();
-    return data.pokemon; // Dies gibt eine Liste der Pokémon für den Typ zurück
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}?limit=151`);
+    const data = await response.json()
+
+    const filteredPokemon = data.pokemon.filter((pokemon: any) =>{
+      const pokemonId = pokemon.pokemon.url.split("/").slice(-2, -1)[0]
+      return parseInt(pokemonId) <= 151
+    })
+
+    return filteredPokemon; // Dies gibt eine Liste der Gen. 1 Pokémon für den Typ zurück
   };
 
   // Funktion, um alle Pokémon für die ausgewählten Typen zu fetchen und zu filtern
@@ -76,14 +82,6 @@ export default function Types() {
   return (
     <>
       <div>
-        <NavLink
-          to="/"
-          className="flex justify-center items-center dark:bg-black pt-8 pb-8"
-        >
-          <img src={logo} alt="" />
-        </NavLink>
-      </div>
-      <div className="grid grid-cols-3 mx-[20%]">
         {/* Buttons für die Typen */}
         {types.map((type) => (
           <button
@@ -106,7 +104,7 @@ export default function Types() {
       </div>
 
       {/* Button zum Auslösen der Suche */}
-      <div className="flex justify-center items-center text-slate-600">
+      <div>
         <button
           onClick={handleSearch}
           style={{
@@ -122,9 +120,9 @@ export default function Types() {
       </div>
 
       {/* Liste der aktuell ausgewählten Typen */}
-      <div className="flex flex-col justify-center items-center text-slate-600">
+      <div>
         <h3>Ausgewählte Typen:</h3>
-        <p className="text-center">
+        <p>
           {selectedTypes.length > 0
             ? selectedTypes.join(", ")
             : "Keine Typen ausgewählt"}
@@ -132,9 +130,9 @@ export default function Types() {
       </div>
 
       {/* Anzeige der gefundenen Pokémon */}
-      <div className="flex flex-col justify-center items-center text-slate-600">
-        <h3 className="">Gefundene Pokémon:</h3>
-        <ul className="flex flex-col justify-center items-center">
+      <div>
+        <h3>Gefundene Pokémon:</h3>
+        <ul>
           {pokemonList.length > 0 ? (
             pokemonList.map((pokemon, index) => <li key={index}>{pokemon}</li>)
           ) : (
