@@ -29,7 +29,7 @@ export default function DetailPage() {
       <br />
       <p>Abbilities:</p>
       <p>{pokemonQuery.data.abilities[0].ability.name}</p>
-      <p>{pokemonQuery.data.abilities[1].ability.name}</p>
+      <p>{pokemonQuery.data.abilities[1]?.ability.name}</p>
       <br />
       <p>Moves:</p>
       <p>{pokemonQuery.data.moves[0].move.name}</p>

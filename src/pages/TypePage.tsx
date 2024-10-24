@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Definiere eine Liste der verfügbaren Pokémon-Typen
 const types = [
