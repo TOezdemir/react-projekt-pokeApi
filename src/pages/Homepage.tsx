@@ -1,20 +1,42 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import PokeSearchBar from "../components/PokeSearchBar";
-import { useThemeContext } from "../contexts/themeContext";
+// import { useThemeContext } from "../contexts/themeContext";
+import { useQuery } from "@tanstack/react-query";
+import callPokemon from "../lib/api";
 
-const PokemonCard = ({ id }: { id: number }) => (
-  <div>
-    <Link to={`/pokemon/${id}`}>
-      <div>
-        <img src="" alt="" />
-        <h3>#00{id}</h3>
-        <p>{id}</p>
-      </div>
-    </Link>
-  </div>
-);
+const PokemonCard = ({ id }: { id: number }) => {
+  const pokemonQuery = useQuery({
+    queryKey: ["pokemon", id],
+    queryFn: () => callPokemon(id),
+  });
+  if (pokemonQuery.isLoading) {
+    return <div>Loading...</div>;
+  }
 
+  if (pokemonQuery.isError) {
+    return <div>Error: {pokemonQuery.error.message}</div>;
+  }
+
+  const pokemonName = pokemonQuery.data!.name.charAt(0).toUpperCase() + pokemonQuery.data!.name.slice(1).toLowerCase()
+
+  return (
+    <div>
+      <Link to={`/pokemon/${id}`}>
+        <div>
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonQuery.data?.id}.png`}
+            alt={pokemonQuery.data!.name}
+          />
+          <h3>#{id.toString().padStart(3, '0')}</h3>
+          <p>{pokemonName}</p>
+        </div>
+      </Link>
+    </div>
+  );
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const TypePage = () => (
   <div>
     <Link to={`/type`}>
