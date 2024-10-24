@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { Pokemon } from "../lib/api";
-import getPokemonById from "../lib/api";
-import { getPokemonByName } from "../lib/api";
+import callPokemon from "../lib/api";
 
 
 export default function PokeSearchBar(){
@@ -13,7 +12,7 @@ export default function PokeSearchBar(){
         const searchText = inputRef.current?.value
         if(searchText){
             // setPokemonData(await getPokemonById(searchText));
-            setPokemonData(await getPokemonByName(searchText))
+            setPokemonData(await callPokemon(searchText))
             inputRef.current!.value = ""
             console.log(searchText)
         }
