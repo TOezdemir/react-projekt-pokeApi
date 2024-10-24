@@ -15,8 +15,8 @@ export default function PokeSearchBar(){
         const searchText = inputRef.current?.value
         if(searchText){
             try{
-                await callPokemon(searchText)
-                navigate (`/pokemon/${searchText}`)
+                const pokemon = await callPokemon(searchText)
+                navigate (`/pokemon/${pokemon.name}`)
             } catch (err){
                 console.error("Fehler:", err)
             }

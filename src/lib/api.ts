@@ -1,9 +1,38 @@
 export type Pokemon = {
-    name: string;
+    abilities: Ability[];
     cries: {
       latest: string;
     };
+    height: number;
+    id: number;
+    location_area_encounters: string;
+    name: string;
+    order: number;
+    types: Type[];
+    weight: number;
+    moves: Moves[]
   }
+
+  export type Ability = {
+    ability: {
+        name: string;
+      };
+      slot: number;
+    }
+
+export type Type = {
+    slot: number;
+    type: {
+        name: string;
+        url: string;
+        };
+    }
+
+export type Moves = {
+    move: {
+        name: string
+    }
+}
 
 export default async function callPokemon(id: number | string): Promise<Pokemon>{
     try{

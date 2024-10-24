@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import PlaySound from "../components/PlaySound";
 import type { Pokemon } from "../lib/api";
 import callPokemon from "../lib/api";
-// import { getPokemonByName } from "../lib/api";
 
 
 export default function DetailPage() {
@@ -27,7 +26,16 @@ export default function DetailPage() {
     <div>
       <h2>Details zu Pokemon #{id}</h2>
       <h1>{pokemonQuery.data.name}</h1>
-      {/* <p>{pokemonQuery.data.}</p> */}
+      <br />
+      <p>Abbilities:</p>
+      <p>{pokemonQuery.data.abilities[0].ability.name}</p>
+      <p>{pokemonQuery.data.abilities[1].ability.name}</p>
+      <br />
+      <p>Moves:</p>
+      <p>{pokemonQuery.data.moves[0].move.name}</p>
+      <p>{pokemonQuery.data.moves[1].move.name}</p>
+      <p>{pokemonQuery.data.moves[2].move.name}</p>
+      <p>{pokemonQuery.data.moves[3].move.name}</p>
       <PlaySound audioURL={pokemonQuery.data.cries.latest}/>
     </div>
   );
