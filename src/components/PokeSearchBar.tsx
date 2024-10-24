@@ -8,6 +8,7 @@ import { useThemeContext } from "../contexts/themeContext";
 import { NavLink } from "react-router-dom";
 
 export default function PokeSearchBar() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
   const [searchText, setSearchText] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
