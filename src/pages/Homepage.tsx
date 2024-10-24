@@ -21,8 +21,11 @@ const PokemonCard = ({ id }: { id: number }) => {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonQuery.data?.id}.png`}
             alt={pokemonQuery.data!.name}
           />
+        </div>
+        <div>
           <h3>#{id.toString().padStart(3, '0')}</h3>
           <p>{pokemonName}</p>
+        </div>
         </div>
       </Link>
     </div>
