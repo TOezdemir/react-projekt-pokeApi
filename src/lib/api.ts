@@ -44,6 +44,17 @@ export type Moves = {
     }
 }
 
+export type PokemonType = {
+    pokemon: {
+      name: string;
+      url: string;
+    };
+  };
+
+export type TypeData = {
+    pokemon: PokemonType[];
+  };
+
 export default async function callPokemon(id: number | string): Promise<Pokemon>{
     try{
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -59,14 +70,13 @@ export default async function callPokemon(id: number | string): Promise<Pokemon>
     }
 }
 
-export const getTypeById = async (id: number | string) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/ytpe/${id}`);
-    const json = response.json();
-    return json;
-  };
+export async function fetchPokemonByType(type: string): Promise<PokemonType[]> {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+    const data = await response.json() as TypeData;
+    const filteredPokemon = data.pokemon.filter((pokemon) => {
+      const pokemonId = pokemon.pokemon.url.split("/").slice(-2, -1)[0];
+      return parseInt(pokemonId) <= 151;
+    });
   
-  export const getAllTypes = async () => {
-    const response = await fetch(`https://pokeapi.co/api/v2/type`);
-    const json = response.json();
-    return json;
-  };
+    return filteredPokemon;
+  }

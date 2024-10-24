@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pokemon } from "../lib/api";
-import { Link } from "react-router-dom";
+import { fetchPokemonByType } from "../lib/api";
 
-// Liste der Pokémon-Typen
+
 const types = [
   "bug",
   "dark",
@@ -41,18 +41,10 @@ export default function Types() {
     );
   };
 
-  // Funktion, um die Pokémon für einen bestimmten Typ zu fetchen
-  const fetchPokemonByType = async (type: string) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}?limit=151`);
-    const data = await response.json()
-
-    const filteredPokemon = data.pokemon.filter((pokemon: any) =>{
-      const pokemonId = pokemon.pokemon.url.split("/").slice(-2, -1)[0]
-      return parseInt(pokemonId) <= 151
-    })
-
-    return filteredPokemon; // Dies gibt eine Liste der Gen. 1 Pokémon für den Typ zurück
-  };
+  // Verstehe das Problem hier nicht!
+  useEffect(()=>{
+    fetchPokemonByType()
+  },[])
 
   // Funktion, um alle Pokémon für die ausgewählten Typen zu fetchen und zu filtern
   const handleSearch = async () => {
@@ -115,28 +107,28 @@ export default function Types() {
             cursor: "pointer",
           }}
         >
-          Suche Pokémon
+          SEARCH
         </button>
       </div>
 
       {/* Liste der aktuell ausgewählten Typen */}
       <div>
-        <h3>Ausgewählte Typen:</h3>
+        <h3>Picked Pokémon types:</h3>
         <p>
           {selectedTypes.length > 0
             ? selectedTypes.join(", ")
-            : "Keine Typen ausgewählt"}
+            : "No types picked..."}
         </p>
       </div>
 
       {/* Anzeige der gefundenen Pokémon */}
       <div>
-        <h3>Gefundene Pokémon:</h3>
+        <h3>Caught Pokémon:</h3>
         <ul>
           {pokemonList.length > 0 ? (
             pokemonList.map((pokemon, index) => <li key={index}>{pokemon}</li>)
           ) : (
-            <p>Keine Pokémon gefunden.</p>
+            <p>No Pokémon found.</p>
           )}
         </ul>
       </div>

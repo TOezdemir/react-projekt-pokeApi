@@ -9,11 +9,11 @@ export default function PokemonCard({ id }: { id: number }) {
     });
   
     if (pokemonQuery.isError) {
-      return "Sorry, kaputt";
+      return "Team Rocket was here - no Pokémons to show!";
     }
   
     if (pokemonQuery.isPending) {
-      return "Loading...";
+      return "Pokédex is loading...";
     }
     const pokemonName = pokemonQuery.data.name.charAt(0).toUpperCase() + pokemonQuery.data.name.slice(1).toLowerCase()
   
