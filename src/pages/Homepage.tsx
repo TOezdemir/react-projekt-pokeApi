@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import PokeSearchBar from "../components/PokeSearchBar";
 // import { useThemeContext } from "../contexts/themeContext";
-import { useQuery } from "@tanstack/react-query";
-import callPokemon from "../lib/api";
 import PokemonCard from "../components/PokemonCard";
 
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Pokemon } from "../lib/api";
 import { fetchPokemonByType } from "../lib/api";
 
@@ -40,11 +40,6 @@ export default function Types() {
           : [...prevSelected, type] // Füge Typ hinzu, wenn er nicht ausgewählt ist
     );
   };
-
-  // Verstehe das Problem hier nicht!
-  useEffect(()=>{
-    fetchPokemonByType()
-  },[])
 
   // Funktion, um alle Pokémon für die ausgewählten Typen zu fetchen und zu filtern
   const handleSearch = async () => {
