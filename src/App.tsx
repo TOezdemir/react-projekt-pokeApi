@@ -19,10 +19,10 @@ const router = createBrowserRouter([
         path: "/type",
         element: <TypePage />,
       },
-    {
-      path: "search",
-      element: <PokeSearchBar/>
-    },
+      {
+        path: "search",
+        element: <PokeSearchBar />,
+      },
     ],
   },
 ]);
