@@ -4,7 +4,6 @@ import PokeSearchBar from "../components/PokeSearchBar";
 // import { useThemeContext } from "../contexts/themeContext";
 import PokemonCard from "../components/PokemonCard";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 // const TypePage = () => (
 //   <div>
 //     <Link to={`/type`}>
