@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Pokemon, Type } from "../lib/api";
 import { fetchPokemonByType } from "../lib/api";
 
-
 const typeNames: Type["type"]["name"][] = [
   "bug",
   "dark",
@@ -44,7 +43,7 @@ export default function Types() {
   // Funktion, um alle Pokémon für die ausgewählten Typen zu fetchen und zu filtern
   const handleSearch = async () => {
     if (selectedTypes.length === 0) {
-      alert("Bitte wähle mindestens einen Typ aus.");
+      alert("Please, pick at least one type!");
       return;
     }
 
@@ -57,12 +56,12 @@ export default function Types() {
       const allPokemons = results.flatMap((result) =>
         result.map((p: any) => p.pokemon.name)
       );
-      console.log("Gefundene Pokémon:", allPokemons);
+      console.log("Found Pokémon:", allPokemons);
 
       // Setzt die Pokémon in den Zustand, um sie anzuzeigen
       setPokemonList(allPokemons);
     } catch (error) {
-      console.error("Fehler beim Abrufen der Pokémon:", error);
+      console.error("Team Rocket is at it again:", error);
     }
   };
 
@@ -72,15 +71,54 @@ export default function Types() {
         {/* Buttons für die Typen */}
         {typeNames.map((type) => (
           <button
-            className="text-slate-500"
             key={type}
             onClick={() => handleTypeToggle(type)}
             style={{
               margin: "5px",
               padding: "10px",
-              backgroundColor: selectedTypes.includes(type)
-                ? "lightgreen"
-                : "white",
+              backgroundColor:
+                // selectedTypes.includes(type)
+                /*  ? "lightgreen" */
+                /*  : "white", */
+                type === "bug"
+                  ? "green"
+                  : type === "dragon"
+                  ? "darkblue"
+                  : type === "fairy"
+                  ? "pink"
+                  : type === "fire"
+                  ? "orange"
+                  : type === "ghost"
+                  ? "purple"
+                  : type === "ground"
+                  ? "brown"
+                  : type === "normal"
+                  ? "grey"
+                  : type === "poison"
+                  ? "violet"
+                  : type === "rock"
+                  ? "beige"
+                  : type === "water"
+                  ? "teal"
+                  : type === "dark"
+                  ? "black"
+                  : type === "electric"
+                  ? "yellow"
+                  : type === "fighting"
+                  ? "red"
+                  : type === "flying"
+                  ? ""
+                  : type === "grass"
+                  ? "darkgreen"
+                  : type === "ice"
+                  ? "lightblue"
+                  : type === "plant"
+                  ? "lightgreen"
+                  : type === "psychic"
+                  ? "lightpink"
+                  : type === "steel"
+                  ? "darkgray"
+                  : "whitesmoke",
               border: "2px solid black",
               cursor: "pointer",
             }}
@@ -97,8 +135,9 @@ export default function Types() {
           style={{
             margin: "5px",
             padding: "10px",
-            backgroundColor: "lightblue",
-            border: "2px solid black",
+            backgroundColor: "yellow",
+            border: "2px solid blue",
+            color: "blue",
             cursor: "pointer",
           }}
         >
