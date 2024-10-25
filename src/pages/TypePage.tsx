@@ -70,7 +70,7 @@ export default function Types() {
   return (
     <>
       <TypeHeader />
-      <h1 className="text-center tracking-tighter mt-20 text-6xl text-searchYellow font-bold text-shadow-lg text-shadow-searchBlue">TYPE</h1>
+      <h1 className="cssshadow text-center  tracking-tighter mt-20 text-6xl text-searchYellow font-bold">TYPE</h1>
       <div className="flex justify-center flex-wrap mt-8">
         {/* Buttons für die Typen */}
         {typeNames.map((type) => (
@@ -227,9 +227,9 @@ export default function Types() {
             pokemonList.map((pokemon, index) => (
               <div key={index} className="border rounded-3xl">
                 <Link to={`/pokemon/${pokemon.name}`}>
-                  <div className="">
+                  <div className="overflow-hidden  bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] flex justify-center text-center">
                     <img
-                      className="object-contain w-48 h-24 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] rounded-t-3xl"
+                      className="object-contain w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96  rounded-t-3xl"
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
                       alt={pokemon.name}
                     />

@@ -14,7 +14,7 @@ export default function PokemonCard({ id }: { id: number }) {
 
   if (pokemonQuery.isPending) {
     return(
-      <div className="border rounded-3xl w-full">
+      <div className="border rounded-3xl">
       <Link to={`/pokemon/${id}`}>
         <div className="">
           {/* <img
@@ -41,7 +41,7 @@ export default function PokemonCard({ id }: { id: number }) {
       <Link to={`/pokemon/${id}`}>
         <div className="">
           <img
-            className="object-contain w-48 h-24 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] rounded-t-3xl"
+            className="object-contain w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] rounded-t-3xl"
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonQuery.data.id}.png`}
             alt={pokemonName}
           />

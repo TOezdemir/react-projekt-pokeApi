@@ -5,6 +5,10 @@
   font-family: "Roboto-Bold";
   src: url(./assets/fonts/Roboto-Bold.ttf);
 }
+@font-face {
+  font-family: "Roboto-Black";
+  src: url(./assets/fonts/Roboto-Black.ttf);
+}
 
 :root {
   font-family: "Roboto-Bold";
@@ -20,3 +24,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.cssshadow{
+  -webkit-text-stroke: 20px #2C72B8;
+  font-family: "Roboto-Black";
+  paint-order: stroke fill;
+}
+
