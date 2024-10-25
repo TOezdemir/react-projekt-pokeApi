@@ -42,11 +42,11 @@ export default function DetailPage() {
       </button>
 
       <div className="flex gap-8 text-4xl font-extrabold text-yellow-300 drop-shadow-[0_4px_4px_rgba(44,114,184,1)]">
-        <h3>#{id!.toString().padStart(3, "0")}</h3>
+        <h3 className="font-bold">#{id!.toString().padStart(3, "0")}</h3> {/*  Fetter Schriftschnitt */}
         <p>{pokemonName}</p>
       </div>
 
-      <p className="text-4xl font-extrabold text-yellow-300 drop-shadow-[0_4px_4px_rgba(44,114,184,1)]">
+      <p className="text-4xl font-extrabold text-yellow-300 drop-shadow-[0_4px_4px_rgba(44,114,184,1)] mb-6"> {/* Margin-Bottom */}
         ATTACKS AND MOVEMENTS
       </p>
 
