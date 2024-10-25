@@ -76,6 +76,7 @@ export default function Types() {
           <button
             key={type}
             onClick={() => handleTypeToggle(type)}
+            className="w-40"
             style={{
               margin: "5px",
               padding: "10px",
@@ -84,46 +85,47 @@ export default function Types() {
                 /*  ? "lightgreen" */
                 /*  : "white", */
                 type === "bug"
-                  ? "green"
+                  ? "#3BB900"
                   : type === "dragon"
-                  ? "darkblue"
+                  ? "#00458A"
                   : type === "fairy"
-                  ? "pink"
+                  ? "#FFC2F9"
                   : type === "fire"
-                  ? "orange"
+                  ? "#FF9900"
                   : type === "ghost"
-                  ? "purple"
+                  ? "#5A1E64"
                   : type === "ground"
-                  ? "brown"
+                  ? "#965A00"
                   : type === "normal"
-                  ? "grey"
+                  ? "#B3B3B3"
                   : type === "poison"
-                  ? "violet"
+                  ? "#AB00AE"
                   : type === "rock"
-                  ? "beige"
+                  ? "#E1B237"
                   : type === "water"
-                  ? "teal"
+                  ? "#00A0E4"
                   : type === "dark"
-                  ? "black"
+                  ? "#1C1C1C"
                   : type === "electric"
-                  ? "yellow"
+                  ? "#FFE600"
                   : type === "fighting"
-                  ? "red"
+                  ? "#E40000"
                   : type === "flying"
-                  ? ""
+                  ? "#CCDADD"
                   : type === "grass"
-                  ? "darkgreen"
+                  ? "#57921C"
                   : type === "ice"
-                  ? "lightblue"
+                  ? "#6AD2FF"
                   : type === "plant"
-                  ? "lightgreen"
+                  ? "#70DF00"
                   : type === "psychic"
-                  ? "lightpink"
+                  ? "#FF81F2"
                   : type === "steel"
-                  ? "darkgray"
+                  ? "#2A4950"
                   : "whitesmoke",
               border: "2px solid black",
               cursor: "pointer",
+              borderRadius: "10px"
             }}
           >
             {type.toUpperCase()}
@@ -135,12 +137,11 @@ export default function Types() {
       <div className="flex justify-center flex-wrap mt-8">
         <button
           onClick={handleSearch}
+          className="border-8 rounded-lg text-blue-500 border-blue-500 w-60 text-3xl"
           style={{
+            backgroundColor: "#FFE600",
             margin: "5px",
             padding: "10px",
-            backgroundColor: "yellow",
-            border: "2px solid blue",
-            color: "blue",
             cursor: "pointer",
           }}
         >
@@ -149,13 +150,71 @@ export default function Types() {
       </div>
 
       {/* Liste der aktuell ausgewählten Typen */}
-      <div className="flex flex-col justify-center items-center text-slate-600 flex-wrap mt-8">
+      <div className="flex flex-col justify-center items-center text-white flex-wrap mt-8">
         <h3 className="text-xl">Picked Pokémon types:</h3>
-        <p className="border p-2 m-2 bg-red-500 text-white mb-8">
-          {selectedTypes.length > 0
-            ? selectedTypes.join(", ")
-            : "No types picked..."}
-        </p>
+        <div className="flex flex-wrap gap-2"> {/* Flexbox Container für Buttons */}
+          {selectedTypes.map((type) => (
+            <button
+              key={type}
+              onClick={() => handleTypeToggle(type)} // Entfernt den Typ beim Klick
+              className="w-44"
+              style={{
+                margin: "5px",
+                padding: "5px 10px", // Geringeres Padding
+                backgroundColor:
+                  type === "bug"
+                    ? "#3BB900"
+                    : type === "dragon"
+                    ? "#00458A"
+                    : type === "fairy"
+                    ? "#FFC2F9"
+                    : type === "fire"
+                    ? "#FF9900"
+                    : type === "ghost"
+                    ? "#5A1E64"
+                    : type === "ground"
+                    ? "#965A00"
+                    : type === "normal"
+                    ? "#B3B3B3"
+                    : type === "poison"
+                    ? "#AB00AE"
+                    : type === "rock"
+                    ? "#E1B237"
+                    : type === "water"
+                    ? "#00A0E4"
+                    : type === "dark"
+                    ? "#1C1C1C"
+                    : type === "electric"
+                    ? "#FFE600"
+                    : type === "fighting"
+                    ? "#E40000"
+                    : type === "flying"
+                    ? "#CCDADD"
+                    : type === "grass"
+                    ? "#57921C"
+                    : type === "ice"
+                    ? "#6AD2FF"
+                    : type === "plant"
+                    ? "#70DF00"
+                    : type === "psychic"
+                    ? "#FF81F2"
+                    : type === "steel"
+                    ? "#2A4950"
+                    : "whitesmoke",
+                border: "2px solid black",
+                cursor: "pointer",
+                borderRadius: "10px"
+              }}
+            >
+              {type.toUpperCase()}
+            </button>
+          ))}
+        </div>
+        {selectedTypes.length === 0 && ( // Anzeige, wenn keine Typen ausgewählt sind
+          <p className="border rounded-md  p-2 m-2  text-white mb-8">
+            Pick a Pokémon type!
+          </p>
+        )}
       </div>
 
       {/* Anzeige der gefundenen Pokémon */}

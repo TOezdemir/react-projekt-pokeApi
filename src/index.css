@@ -1,9 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url(./assets/fonts/Roboto-Bold.ttf);
+}
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto-Bold";
   line-height: 1.5;
   font-weight: 400;
 
