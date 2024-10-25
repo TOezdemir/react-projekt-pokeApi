@@ -67,8 +67,8 @@ export default function Types() {
   };
 
   return (
-    <>
-      <div>
+  <>
+    <div>
         {/* Buttons für die Typen */}
         {typeNames.map((type) => (
           <button
@@ -138,16 +138,6 @@ export default function Types() {
       </div>
 
       {/* Anzeige der gefundenen Pokémon */}
-      {/* <div>
-        <h3>Caught Pokémon:</h3>
-        <ul>
-          {pokemonList.length > 0 ? (
-            pokemonList.map((pokemon, index) => <li key={index}>{pokemon}</li>)
-          ) : (
-            <p>No Pokémon found.</p>
-          )}
-        </ul>
-      </div> */}
       <div>
         <h3>Caught Pokémon:</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -158,7 +148,7 @@ export default function Types() {
               <div className="">
                 <img
                 className="object-contain w-48 h-24 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] rounded-t-3xl"
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index}.png`} alt={pokemonName}/>
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index+1}.png`} alt={pokemonName}/>
               </div>
               <div className="bg-white text-slate-500 rounded-b-3xl p-2 flex justify-between px-4 sm:px-8">
               <h3>#{(index + 1).toString().padStart(3, "0")}</h3>
@@ -168,10 +158,10 @@ export default function Types() {
           </div>
         ))
         ) : (
-      <p>No Pokémon found.</p>
-      )}
+        <p>No Pokémon found.</p>
+        )}
+      </div>
     </div>
-</div>
-    </>
+  </>
   );
 }
