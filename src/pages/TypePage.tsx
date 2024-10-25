@@ -75,16 +75,17 @@ export default function Types() {
         {/* Buttons für die Typen */}
         {typeNames.map((type) => (
           <button
-            key={type}
-            onClick={() => handleTypeToggle(type)}
-            className="w-40"
-            style={{
-              margin: "5px",
-              padding: "10px",
-              backgroundColor:
-                // selectedTypes.includes(type)
-                /*  ? "lightgreen" */
-                /*  : "white", */
+          key={type}
+          onClick={() => handleTypeToggle(type)}
+          className={`w-40 
+                     ${selectedTypes.includes(type) ? 'bg-opacity-70' : ''} 
+                     hover:bg-opacity-70 
+                     transition-opacity 
+                     duration-200`}
+          style={{
+            margin: "5px",
+            padding: "10px",
+            backgroundColor:
                 type === "bug"
                   ? "#3BB900"
                   : type === "dragon"
@@ -211,7 +212,7 @@ export default function Types() {
           ))}
         </div>
         {selectedTypes.length === 0 && ( // Anzeige, wenn keine Typen ausgewählt sind
-          <p className="border rounded-md  p-2 m-2  text-white mb-8">
+          <p className="border-2 border-searchBlue rounded-md  p-2 m-2 mb-8 text-xl text-searchBlue bg-searchYellow">
             Pick a Pokémon type!
           </p>
         )}
