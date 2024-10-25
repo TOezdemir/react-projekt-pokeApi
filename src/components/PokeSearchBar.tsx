@@ -43,7 +43,6 @@ export default function PokeSearchBar() {
   const { toggleTheme } = useThemeContext();
 
   const currentLink = useLocation();
-  console.log(currentLink.pathname);
 
   return (
     <section>
