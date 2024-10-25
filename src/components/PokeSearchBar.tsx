@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Pokemon } from "../lib/api";
 import callPokemon from "../lib/api";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import themebild from "../assets/theme.svg";
 import menu from "../assets/menu.svg";
 import { useThemeContext } from "../contexts/themeContext";
@@ -42,7 +42,7 @@ export default function PokeSearchBar() {
 
   const { toggleTheme } = useThemeContext();
 
-  let currentLink = useLocation();
+  const currentLink = useLocation();
   console.log(currentLink.pathname);
 
   return (
