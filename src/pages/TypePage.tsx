@@ -225,11 +225,11 @@ export default function Types() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  text-center md:mx-24 lg:mx-36 xl:mx-48 gap-4 relative">
           {pokemonList.length > 0 ? (
             pokemonList.map((pokemon, index) => (
-              <div key={index} className="border rounded-3xl">
+              <div key={index} className="mx-28 sm:mx-10 md:mx-0 overflow-hidden border rounded-3xl">
                 <Link to={`/pokemon/${pokemon.name}`}>
-                  <div className="overflow-hidden  bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] flex justify-center text-center">
+                  <div className="bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] flex justify-center text-center">
                     <img
-                      className="object-contain w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96  rounded-t-3xl"
+                      className="object-contain w-48 h-48 sm:w-64 sm:h-64 md:w-56 md:h-56 lg:w-80 lg:h-80 xl:w-96 xl:h-96  rounded-t-3xl"
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
                       alt={pokemon.name}
                     />
