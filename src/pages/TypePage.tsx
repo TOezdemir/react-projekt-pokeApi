@@ -70,6 +70,7 @@ export default function Types() {
   return (
     <>
       <TypeHeader />
+      <h1 className="text-center tracking-tighter mt-20 text-6xl text-searchYellow font-bold text-shadow-lg text-shadow-searchBlue">TYPE</h1>
       <div className="flex justify-center flex-wrap mt-8">
         {/* Buttons für die Typen */}
         {typeNames.map((type) => (
@@ -137,9 +138,8 @@ export default function Types() {
       <div className="flex justify-center flex-wrap mt-8">
         <button
           onClick={handleSearch}
-          className="border-8 rounded-lg text-blue-500 border-blue-500 w-60 text-3xl"
+          className="border-8 rounded-xl bg-searchYellow text-searchBlue border-searchBlue w-60 text-3xl"
           style={{
-            backgroundColor: "#FFE600",
             margin: "5px",
             padding: "10px",
             cursor: "pointer",
