@@ -21,7 +21,7 @@ const Homepage = () => {
         <Header />
         <PokeSearchBar />
 
-        <div>
+        <div className="grid grid-cols-2 text-center md:mx-24 lg:mx-36 xl:mx-48 gap-4">
           {emptyPokemonArray.map((_id, index) => (
             <PokemonCard key={index} id={index + 1} />
           ))}

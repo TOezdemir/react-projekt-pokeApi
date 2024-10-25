@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Pokemon, Type } from "../lib/api";
 import { fetchPokemonByType } from "../lib/api";
 
-
 const typeNames: Type["type"]["name"][] = [
   "bug",
   "dark",
