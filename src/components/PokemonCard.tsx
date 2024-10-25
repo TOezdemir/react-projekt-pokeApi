@@ -13,7 +13,23 @@ export default function PokemonCard({ id }: { id: number }) {
   }
 
   if (pokemonQuery.isPending) {
-    return "Pokédex is loading...";
+    return(
+      <div className="border rounded-3xl w-full">
+      <Link to={`/pokemon/${id}`}>
+        <div className="">
+          {/* <img
+            className="object-contain w-48 h-24 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-gradient-to-r from-[#ffe1c6] to-[#ffcb05] rounded-t-3xl"
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonQuery.data.id}.png`}
+            alt={}
+          /> */}
+        </div>
+        <div className="bg-white text-slate-500 rounded-b-3xl p-2 flex justify-between px-4 sm:px-8">
+          {/* <h3>#{id.toString().padStart(3, "0")}</h3> */}
+          <p>{"Loading..."}</p>
+        </div>
+      </Link>
+    </div>
+    )
   }
 
   const pokemonName =
