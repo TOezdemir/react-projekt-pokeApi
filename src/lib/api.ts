@@ -69,13 +69,18 @@ export default async function callPokemon(id: number | string): Promise<Pokemon>
     }
 }
 
-export async function fetchPokemonByType(type: string): Promise<PokemonType[]> {
+export async function fetchPokemonByType(type: string): Promise<{name: string, id: number}[]> {
     const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
     const data = await response.json() as TypeData;
     const filteredPokemon = data.pokemon.filter((pokemon) => {
       const pokemonId = pokemon.pokemon.url.split("/").slice(-2, -1)[0];
       return parseInt(pokemonId) <= 151;
-    });
-  
+    }).map((pokemon)=>{
+      const pokemonId = pokemon.pokemon.url.split("/").slice(-2,-1)[0]
+      return{
+        name: pokemon.pokemon.name,
+        id: parseInt(pokemonId)
+      }
+    })
     return filteredPokemon;
   }
