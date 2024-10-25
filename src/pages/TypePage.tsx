@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pokemon, Type } from "../lib/api";
+import { Type } from "../lib/api";
 import { fetchPokemonByType } from "../lib/api";
 import { Link } from "react-router-dom";
 
@@ -29,7 +29,7 @@ export default function Types() {
   // Zustand für die ausgewählten Typen
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   // Zustand für die gefilterten Pokémon
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [pokemonList, setPokemonList] = useState<{name: string, id: number}[]>([]);
 
   // Funktion, um den Typ zu toggeln
   const handleTypeToggle = (type: string) => {
